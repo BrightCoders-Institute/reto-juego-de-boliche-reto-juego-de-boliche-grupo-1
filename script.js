@@ -9,7 +9,7 @@ class Turn {
     }
 
     throw() {
-        let shoot1 = this.random(11)
+        let shoot1 = this.random(11);
         this.turns.push(shoot1);
         if (shoot1 === 10) {
             return this.turns;
@@ -21,7 +21,7 @@ class Turn {
     }
 
     oneThrow() {
-        let shoot = this.random(11)
+        let shoot = this.random(11);
         this.turns.push(shoot);
         return shoot;
     }
@@ -36,7 +36,7 @@ class Turn {
 
     puntuation() {
         return this.turns.reduce((total, tiro) => total + tiro, 0);
-    };
+    }
 
     random(pins) {
         return Math.floor(Math.random() * pins);
@@ -73,27 +73,27 @@ class Game extends Turn {
         console.table(this.rounds);
         for (let i = 0; i < 9; i++) {
             this.totalScore += this.rounds[i].puntuation();
-            console.log(this.totalScore)
+            console.log(this.totalScore);
 
             if (this.rounds[i].isStrike()) {
                 console.log('Strike');
                 this.totalScore += this.rounds[i + 1].puntuation();
-                console.log('=> ', this.totalScore)
+                console.log('=> ', this.totalScore);
                 if (this.rounds[i + 1].isStrike()) {
                     this.totalScore += this.rounds[i + 2].puntuation();
                 }
             } else if (this.rounds[i].isSpare()) {
-                this.totalScore += this.rounds[i + 1].turns[0]
+                this.totalScore += this.rounds[i + 1].turns[0];
             }
         }
         if (this.rounds[9].isSpare()) {
-            console.log('Spare en el ultimo tiro')
+            console.log('Spare en el ultimo tiro');
         }
         if (this.rounds[9].isSpare() || this.rounds[9].isStrike()) {
             this.extraPlay();
         }
 
-        console.table(this.rounds)
+        console.table(this.rounds);
         return this.totalScore;
     }
 
@@ -102,5 +102,3 @@ class Game extends Turn {
 let game = new Game();
 
 console.log(`La puntuación final es: ${game.puntuationFinal()}`);
-
-
