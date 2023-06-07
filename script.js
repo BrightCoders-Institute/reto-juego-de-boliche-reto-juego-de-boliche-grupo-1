@@ -66,6 +66,12 @@ class Game extends Turn {
         this.rounds.push(round);
     }
 
+    extraPlay() {
+        let round = new Turn();
+        this.totalScore += round.oneThrow();
+        this.rounds.push(round);
+    }
+
     puntuationFinal() {
 
         this.play();
